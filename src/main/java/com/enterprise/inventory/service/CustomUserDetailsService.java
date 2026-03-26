@@ -1,4 +1,4 @@
-package com.enterprise.inventory.security;
+package com.enterprise.inventory.service;
 
 import com.enterprise.inventory.entity.User;
 import com.enterprise.inventory.repository.UserRepository;

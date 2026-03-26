@@ -18,7 +18,7 @@ public class StockAlertService {
 
     private LocalDateTime lastEmailSent = null;
 
-    private final String ALERT_EMAIL = "your_email@gmail.com";
+    private final String ALERT_EMAIL = "email@gmail.com";
 
     @Scheduled(fixedRate = 60000)
     public void checkLowStock() {
@@ -29,7 +29,8 @@ public class StockAlertService {
         if (!lowStockProducts.isEmpty()) {
 
             if (lastEmailSent != null &&
-                    lastEmailSent.plusHours(6).isAfter(LocalDateTime.now())) {
+                    // lastEmailSent.plusHours(6).isAfter(LocalDateTime.now())) 
+                     lastEmailSent.plusMinutes(5).isAfter(LocalDateTime.now())){
                 return; // Skip sending email
             }
 
@@ -43,10 +44,12 @@ public class StockAlertService {
 
                 body.append("Product: ")
                         .append(p.getName())
-                        .append("\nCurrent: ")
+                        .append("\nAvailable: ")
                         .append(p.getQuantity())
                         .append("\nRecommended Order: ")
                         .append(recommended)
+                        .append("⚠ Reorder Level: ")
+                        .append(p.getReorderLevel()).append("\n")
                         .append("\n-----------------\n");
             }
 

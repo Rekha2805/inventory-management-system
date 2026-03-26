@@ -1,6 +1,6 @@
 package com.enterprise.inventory.config;
 
-import com.enterprise.inventory.security.CustomUserDetailsService;
+import com.enterprise.inventory.service.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.*;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
